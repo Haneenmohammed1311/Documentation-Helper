@@ -7,10 +7,21 @@ authors = [
     { name = "Haneen Mohammed", email = "haneeenmohammid@gmail.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "langchain>=1.4.2",
+    "langchain-chroma>=1.1.0",
+    "langchain-google-genai>=4.4.0",
+    "langchain-huggingface>=1.2.2",
+    "langchain-tavily>=0.2.18",
+    "langchain-text-splitters>=1.1.2",
+    "python-dotenv>=1.2.3",
+    "sentence-transformers>=6.1.0",
+    "streamlit>=1.64.0",
+]
 
-[project.scripts]
-documentation-helper = "documentation_helper:main"
+[tool.uv]
+package = false
 
 [build-system]
 requires = ["uv_build>=0.12.10,<0.13.0"]
