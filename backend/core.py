@@ -62,8 +62,14 @@ def run_llm(query:str) ->Dict[str,Any]:
     response = agent.invoke({"messages":message})
 
     #Extract the answer from the last llm message 
-    answer = response["messages"][-1].content
+    final_message = response["messages"][-1]
 
+    if isinstance(final_message.content, str):
+        answer = final_message.content
+    else:
+        answer = "\n".join(
+            block["text"] for block in final_message.content if block.get("type") == "text"
+        )
     #Extract context documents from ToolMessage artifacts
     context_docs = []
     for message in response["messages"]:
